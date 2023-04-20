@@ -4,6 +4,9 @@
 
 # FLARE
 flare/node_modules/
+flare/out/
+flare/.rollup.cache/
+flare/.temp/
 
 # Server
 server/.gradle/
