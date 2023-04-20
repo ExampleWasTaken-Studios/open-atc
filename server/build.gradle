@@ -4,6 +4,15 @@ plugins {
 
 jar {
     manifest {
-        attributes('Main-Class': 'nz.examplewastaken.openatc.OpenATC')
+        attributes('Main-Class': 'main.java.nz.examplewastaken.openatc.OpenATC')
     }
 }
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+}
+
