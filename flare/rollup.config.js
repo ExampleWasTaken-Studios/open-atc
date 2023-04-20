@@ -8,7 +8,7 @@ import postcss from 'rollup-plugin-postcss';
 import copy from 'rollup-plugin-copy';
 import livereload from 'rollup-plugin-livereload';
 import serve from 'rollup-plugin-serve';
-import tailwind from 'tailwindcss';
+import tailwindcss from 'tailwindcss';
 
 const isDev = process.env.NODE_ENV === 'development';
 const sourcemap = isDev ? 'inline' : false;
@@ -18,7 +18,7 @@ export default {
   plugins: [
     copy({
       targets: [
-        { src: join(__dirname, 'index.html'), dest: 'out' },
+        { src: 'src/index.html', dest: 'out' },
       ],
     }),
     resolve({
@@ -34,7 +34,7 @@ export default {
       extract: true,
       minimize: true,
       plugins: [
-        tailwind('./tailwind.config.js'),
+        tailwindcss('./tailwind.config.js'),
       ],
     }),
     !isDev && terser(),
