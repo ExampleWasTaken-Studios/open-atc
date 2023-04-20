@@ -1,2 +1,14 @@
+# Project
 .idea/
-backend/target/
+*.iml
+
+# Server
+server/.gradle/
+server/build/
+
+# Client
+client/node_modules/
+client/.rollup.cache/
+client/.temp/
+client/out/
+
