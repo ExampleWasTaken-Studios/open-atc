@@ -4,7 +4,8 @@
   "description": "FLARE (Fast, Lightweight, Adaptable and Reactive Engine) is the render engine that is used in OpenATC.\r It provides a canvas that can be drawn on.",
   "main": "index.js",
   "scripts": {
-    "start": ""
+    "start": "cross-env NODE_ENV=development rollup --bundleConfigAsCjs -c rollup.config.js -w",
+    "build": "cross-env NODE_ENV=production rollup --bundleConfigAsCjs -c rollup.config.js"
   },
   "author": "ExampleWasTaken",
   "license": "GPL-3.0",
