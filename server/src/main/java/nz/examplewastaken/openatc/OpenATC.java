@@ -1,4 +1,4 @@
-package main.java.nz.examplewastaken.openatc;
+package nz.examplewastaken.openatc;
 
 public class OpenATC {
     public static void main(String[] args) {
