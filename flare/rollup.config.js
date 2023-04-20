@@ -14,11 +14,11 @@ const isDev = process.env.NODE_ENV === 'development';
 const sourcemap = isDev ? 'inline' : false;
 
 export default {
-  input: join(__dirname, 'index.tsx'),
+  input: join(__dirname, 'src/index.tsx'),
   plugins: [
     copy({
       targets: [
-        { src: 'index.html', dest: 'out' },
+        { src: join(__dirname, 'index.html'), dest: 'out' },
       ],
     }),
     resolve({
@@ -40,7 +40,7 @@ export default {
     !isDev && terser(),
     isDev && serve({
       contentBase: 'out',
-      port: 3000,
+      port: 3001,
       delay: 1000,
     }),
     isDev && livereload('out/bundle.js'),
