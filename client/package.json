@@ -4,6 +4,7 @@
   "description": "",
   "main": "out/main/main.js",
   "scripts": {
+    "start": "concurrently -n renderer,main \"npm run renderer\" npm \"npm run main\"",
     "main": "tsc -p main && cross-env NODE_ENV=development electron .",
     "renderer": "npm run client:bundle:renderer",
     "client:bundle:main": "cross-env NODE_ENV=development rollup --bundleConfigAsCjs -c main/rollup.config.js && cross-env NODE_ENV=development electron .",
