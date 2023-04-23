@@ -1,27 +1,37 @@
-export interface Point {
-  x: string | number;
-  y: string | number;
-  z: string | number;
-  rotation: string | number;
-  width: string | number;
-  height: string | number;
-  className: string;
-  key: number;
-}
+import { Rectangle, RectangleProps } from '../Geometry/Rectangle';
 
 interface CanvasProps {
+  rectangles: RectangleProps[];
+  // circles: CircleProps[];
   className?: string;
-  points: Point[];
   devMode?: boolean;
 }
 
-export const Canvas = ({ className, points, devMode }: CanvasProps) => {
+export const Canvas = ({ rectangles, className, devMode }: CanvasProps) => {
 
-  devMode ? className += ' border-red-600 border-4' : null;
+  devMode ? className += ' border-red-600 border-2' : null;
 
   return (
-    <div className={className}>
-      {/* Draw points on canvas */}
+    <div
+      className={className}
+    >
+      {
+        rectangles.map(current => {
+          return (
+            <Rectangle
+              xPos={current.xPos}
+              yPos={current.yPos}
+              zPos={current.zPos}
+              xRot={current.xRot}
+              yRot={current.yRot}
+              zRot={current.zRot}
+              key={current.key}
+            >
+              {current.children}
+            </Rectangle>
+          );
+        })
+      }
     </div>
   );
 };
