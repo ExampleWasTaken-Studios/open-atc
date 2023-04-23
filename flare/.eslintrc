@@ -43,6 +43,7 @@
     {
       "files": ["*.tsx"],
       "rules": {
+        "no-undef": "off",
         // "react/react-in-jsx-scope": "off",
         "react/jsx-closing-bracket-location": ["error", "line-aligned"],
         "react/jsx-max-props-per-line": ["error", { "maximum": 1}],
