@@ -1,17 +1,17 @@
 import { ReactNode } from 'react';
 
-export interface RectangleProps {
+interface RectangleShapeProps {
   xPos: number;
   yPos: number;
   zPos: number;
   xRot: number;
   yRot: number;
   zRot: number;
-  key: number;
+  id: number;
   children: ReactNode;
 }
 
-export const Rectangle = ({ xPos, yPos, zPos, xRot, yRot, zRot, key, children }: RectangleProps) => {
+export const RectangleShape = ({ xPos, yPos, zPos, xRot, yRot, zRot, id, children }: RectangleShapeProps) => {
 
   return (
     <div
@@ -23,7 +23,7 @@ export const Rectangle = ({ xPos, yPos, zPos, xRot, yRot, zRot, key, children }:
         zIndex: zPos,
         transform: `rotateX(${xRot}) rotateY(${yRot}) rotateZ(${zRot})`,
       }}
-      key={key}
+      key={id}
     >
       {children}
     </div>
