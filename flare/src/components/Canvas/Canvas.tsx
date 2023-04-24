@@ -52,7 +52,6 @@ export const Canvas = ({ rectangles, circles, className, devMode }: CanvasProps)
               yRot={current.yRot}
               zRot={current.zRot}
               diameter={current.diameter}
-              color={current.color}
               backgroundColor={current.backgroundColor}
               border={current.border}
               id={current.id}

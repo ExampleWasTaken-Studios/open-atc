@@ -12,10 +12,6 @@ export interface Circle {
   /**
    * HEX color code
    */
-  color: string;
-  /**
-   * CSS background-color notation
-   */
   backgroundColor: string;
   /**
    * CSS border notation

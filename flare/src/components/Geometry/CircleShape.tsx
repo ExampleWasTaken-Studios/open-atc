@@ -14,10 +14,6 @@ interface CircleShapeProps {
   /**
    * HEX color code
    */
-  color: string;
-  /**
-   * CSS background-color notation
-   */
   backgroundColor: string;
   /**
    * CSS border notation
@@ -26,7 +22,7 @@ interface CircleShapeProps {
   id: number;
 }
 
-export const CircleShape = ({ xPos, yPos, zPos, xRot, yRot, zRot, diameter, color, backgroundColor, border, id }: CircleShapeProps) => {
+export const CircleShape = ({ xPos, yPos, zPos, xRot, yRot, zRot, diameter, backgroundColor, border, id }: CircleShapeProps) => {
   return (
     <div
       style={{
@@ -37,7 +33,6 @@ export const CircleShape = ({ xPos, yPos, zPos, xRot, yRot, zRot, diameter, colo
         transform: `rotateX(${xRot}) rotateY(${yRot}) rotateZ(${zRot})`,
         height: diameter,
         width: diameter,
-        color: color,
         backgroundColor: backgroundColor,
         border: border,
         borderRadius: '50%',
