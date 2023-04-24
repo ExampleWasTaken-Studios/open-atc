@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 
 export const App = () => {
-  const [isDev] = useState(false);
+  const [isDev, setIsDev] = useState(false);
+
+  useEffect(() => {
+    setIsDev(process.env.NODE_ENV === 'development');
+  }, []);
 
   const [basename, setBasename] = useState('');
 

@@ -2,9 +2,10 @@ import { app, BrowserWindowConstructorOptions, protocol } from 'electron';
 import { join } from 'path';
 
 import { createMainWindow } from './functions/createMainWindow';
+import { setupIpc } from './functions/setupIpc';
 
 const mainWindowOptions: BrowserWindowConstructorOptions = {
-  width: 800,
+  width: 900,
   height: 600,
   disableAutoHideCursor: true,
   webPreferences: {
@@ -22,4 +23,5 @@ app.on('ready', () => {
   });
 
   createMainWindow(mainWindowOptions);
+  setupIpc();
 });
