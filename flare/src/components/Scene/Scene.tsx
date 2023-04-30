@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { CanvasProps } from '../Canvas/Canvas';
 
 interface SceneProps {
-  className: string;
+  className?: string;
   children: ReactElement<CanvasProps>;
 }
 
