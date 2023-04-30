@@ -1,135 +1,137 @@
-import { useState } from 'react';
 import { Tag } from '../Tag/Tag';
-import { Rectangle } from '../../api/geometry/Rectangle';
-import { Circle } from '../../api/geometry/Circle';
-import { Canvas } from '../../api/Canvas';
+import { Scene } from '../../components/Scene/Scene';
+import { Canvas } from '../../components/Canvas/Canvas';
+import { useEffect, useState } from 'react';
+import { Rectangle } from '../../components/Geometry/Rectangle';
+import { Circle } from '../../components/Geometry/Circle';
 
-const mockRectangles: Rectangle[] = [
+const testElements = [
   {
-    xPos: 100,
-    yPos: 250,
-    zPos: 50,
-    xRot: 0,
-    yRot: 0,
-    zRot: 0,
+    x: 234,
+    y: 443,
+    z: 12000,
+    rotation: 0,
+    width: 105,
+    height: 55,
     id: 1,
     children: <Tag />,
+    draggable: true,
   },
   {
-    xPos: 250,
-    yPos: 150,
-    zPos: 350,
-    xRot: 0,
-    yRot: 0,
-    zRot: 0,
+    x: 789,
+    y: 76,
+    z: 35000,
+    rotation: 0,
+    width: 105,
+    height: 55,
     id: 2,
     children: <Tag />,
+    draggable: true,
   },
   {
-    xPos: 450,
-    yPos: 75,
-    zPos: 200,
-    xRot: 0,
-    yRot: 0,
-    zRot: 0,
+    x: 567,
+    y: 234,
+    z: 5000,
+    rotation: 0,
+    width: 105,
+    height: 55,
     id: 3,
     children: <Tag />,
+    draggable: true,
   },
   {
-    xPos: 200,
-    yPos: 400,
-    zPos: 100,
-    xRot: 0,
-    yRot: 0,
-    zRot: 0,
+    x: 345,
+    y: 467,
+    z: 20000,
+    rotation: 0,
+    width: 105,
+    height: 55,
     id: 4,
     children: <Tag />,
+    draggable: true,
   },
   {
-    xPos: 75,
-    yPos: 100,
-    zPos: 450,
-    xRot: 0,
-    yRot: 0,
-    zRot: 0,
+    x: 901,
+    y: 445,
+    z: 10000,
+    rotation: 0,
+    width: 105,
+    height: 55,
     id: 5,
     children: <Tag />,
+    draggable: true,
   },
 ];
-const mockCircles: Circle[] = [
-  {
-    xPos: 400,
-    yPos: 150,
-    zPos: 100,
-    xRot: 0,
-    yRot: 0,
-    zRot: 0,
-    diameter: 80,
-    backgroundColor: 'rgba(0, 0, 0, 0)',
-    border: '1px solid #FFC107',
-    id: 1,
-  },
-  {
-    xPos: 1200,
-    yPos: 300,
-    zPos: 50,
-    xRot: 0,
-    yRot: 0,
-    zRot: 0,
-    diameter: 60,
-    backgroundColor: 'rgba(0, 0, 0, 0)',
-    border: '1px solid #FF5733',
-    id: 2,
-  },
-  {
-    xPos: 900,
-    yPos: 50,
-    zPos: 200,
-    xRot: 0,
-    yRot: 0,
-    zRot: 0,
-    diameter: 120,
-    backgroundColor: 'rgba(0, 0, 0, 0)',
-    border: '1px solid #FFC107',
-    id: 3,
-  },
-  {
-    xPos: 1650,
-    yPos: 450,
-    zPos: 300,
-    xRot: 0,
-    yRot: 0,
-    zRot: 0,
-    diameter: 100,
-    backgroundColor: 'rgba(0, 0, 0, 0)',
-    border: '1px solid #FF5733',
-    id: 4,
-  },
-  {
-    xPos: 800,
-    yPos: 100,
-    zPos: 150,
-    xRot: 0,
-    yRot: 0,
-    zRot: 0,
-    diameter: 50,
-    backgroundColor: 'rgba(0, 0, 0, 0)',
-    border: '1px solid #FFC107',
-    id: 5,
-  },
-];
+
+const getRandomInt = (min: number, max: number) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
+const clamp = (value: number, min: number, max: number) => {
+  return Math.min(Math.max(value, min), max);
+};
+
+
 export const App = () => {
 
-  const [rectangles] = useState(mockRectangles);
-  const [circles] = useState(mockCircles);
+  const [mockElements, setMockElements] = useState(testElements);
+
+  useEffect(() => {
+    const i = setInterval(() => {
+      const newMockElements = mockElements.map((current, index) => {
+        current.x = clamp(getRandomInt(current.x - 10, current.x + 10), 10, 1650);
+        current.y = clamp(getRandomInt(current.y - 10, current.y + 10), 10, 1650);
+        current.z = getRandomInt(0, 10);
+        return current;
+      });
+      setMockElements(newMockElements);
+    }, 1000);
+
+    return () => {
+      clearInterval(i);
+    };
+  }, []);
 
   return (
-    <Canvas
-      className="w-[1700px] h-[500px] overflow-hidden bg-black"
-      devMode
-      rectangles={rectangles}
-      circles={circles}
-    />
+    <div className="h-[900px] flex justify-center items-center">
+      <Scene className='w-[1700px] h-[800px]'>
+        <Canvas className="w-full h-full border-2 border-red-600 bg-black">
+          {mockElements.map((current, index) => {
+            return (
+              <>
+                <Rectangle
+                  style="outline"
+                  color="green"
+                  borderWidth={2}
+                  x={current.x}
+                  y={current.y}
+                  z={current.z}
+                  width={current.width}
+                  height={current.height}
+                  key={current.id}
+                >
+                  {current.children}
+                </Rectangle>
+                <Circle
+                  style="outline"
+                  color="red"
+                  borderWidth={1}
+                  x={current.x + current.width + 20}
+                  y={current.y + current.height + 20}
+                  z={current.z}
+                  diameter={current.width}
+                  key={current.id}
+                >
+                  {index % 2 === 0 && current.children}
+                </Circle>
+              </>
+            );
+          })}
+        </Canvas>
+      </Scene>
+    </div>
   );
 };
 

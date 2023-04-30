@@ -1,65 +1,51 @@
-import { RectangleShape } from '../Geometry/RectangleShape';
-import { CircleShape } from '../Geometry/CircleShape';
-import { Rectangle } from '../../api/geometry/Rectangle';
-import { Circle } from '../../api/geometry/Circle';
+import { MouseEvent, ReactElement, useEffect, useRef, useState } from 'react';
+import { CanvasElementProps } from './CanvasElement';
 
-interface CanvasProps {
-  rectangles: Rectangle[];
-  circles: Circle[];
-  className?: string;
-  devMode?: boolean;
+export interface CanvasProps {
+  className: string; // TODO: remove once background handling is implemented
+  children: ReactElement<CanvasElementProps>[];
 }
 
-/**
- * @private
- */
-export const Canvas = ({ rectangles, circles, className, devMode }: CanvasProps) => {
+export const Canvas = ({ className, children }: CanvasProps) => {
 
-  devMode ? className += ' border-red-600 border-2' : null;
-  className += ' relative';
+  const canvasRef = useRef<HTMLDivElement>(null);
+  const sceneRef = useRef<HTMLDivElement>(null);
+  const [sceneRect, setSceneRect] = useState<DOMRect>(null);
+
+  useEffect(() => {
+    if (sceneRef.current) {
+      const scene = canvasRef.current.parentElement as HTMLDivElement;
+      setSceneRect(scene.getBoundingClientRect());
+    }
+  }, []);
+
+  const onMouseMove = (event: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+    //
+  };
+
+  const onMouseDown = (event: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+    //
+  };
+
+  const onMouseUp = (event: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+    //
+  };
 
   return (
     <div
+      ref={canvasRef}
       className={className}
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+      }}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      onMouseDown={onMouseDown}
     >
-      {
-        rectangles.map(current => {
-          return (
-            <RectangleShape
-              xPos={current.xPos}
-              yPos={current.yPos}
-              zPos={current.zPos}
-              xRot={current.xRot}
-              yRot={current.yRot}
-              zRot={current.zRot}
-              id={current.id}
-              key={current.id}
-            >
-              {current.children}
-            </RectangleShape>
-          );
-        })
-      }
-
-      {
-        circles.map(current => {
-          return (
-            <CircleShape
-              xPos={current.xPos}
-              yPos={current.yPos}
-              zPos={current.zPos}
-              xRot={current.xRot}
-              yRot={current.yRot}
-              zRot={current.zRot}
-              diameter={current.diameter}
-              backgroundColor={current.backgroundColor}
-              border={current.border}
-              id={current.id}
-              key={current.id}
-            />
-          );
-        })
-      }
+      {children}
     </div>
   );
 };

@@ -13,7 +13,8 @@
     "module": "ESNext",
     "lib": [
       "DOM",
-      "ES2022"
+      "ES2022",
+      "dom"
     ],
     "moduleResolution": "node",
     "inlineSourceMap": true,
