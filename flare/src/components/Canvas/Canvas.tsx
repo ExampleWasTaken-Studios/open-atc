@@ -2,7 +2,7 @@ import { MouseEvent, ReactElement, useEffect, useRef, useState } from 'react';
 import { CanvasElementProps } from './CanvasElement';
 
 export interface CanvasProps {
-  className: string; // TODO: remove once background handling is implemented
+  className?: string; // TODO: remove once background handling is implemented
   children: ReactElement<CanvasElementProps>[];
 }
 
