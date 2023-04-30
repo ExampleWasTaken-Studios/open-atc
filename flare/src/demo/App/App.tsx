@@ -80,7 +80,7 @@ export const App = () => {
 
   useEffect(() => {
     const i = setInterval(() => {
-      const newMockElements = mockElements.map((current, index) => {
+      const newMockElements = mockElements.map(current => {
         current.x = clamp(getRandomInt(current.x - 10, current.x + 10), 10, 1650);
         current.y = clamp(getRandomInt(current.y - 10, current.y + 10), 10, 1650);
         current.z = getRandomInt(0, 10);
