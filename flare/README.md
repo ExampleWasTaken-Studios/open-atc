@@ -55,7 +55,7 @@ const App = () => {
           <div>Hello World from a rectangle!</div>
         </Rectangle>
         <Circle
-          x={30}
+          x={30}    
           y={30}
           z={0}
           diameter={100}
