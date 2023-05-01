@@ -6,6 +6,7 @@ node_modules/
 # FLARE
 flare/node_modules/
 flare/out/
+flare/lib/
 flare/.rollup.cache/
 flare/.temp/
 

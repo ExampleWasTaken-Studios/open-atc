@@ -6,6 +6,9 @@
       "@core/*": ["./core/*"],
       "@client/*": ["./client/*"]
     },
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./lib",
     "noEmitOnError": true,
     "incremental": true,
     "tsBuildInfoFile": "./.temp/.ts/.tsbuildinfo",
@@ -36,5 +39,9 @@
     "jsx": "react-jsx",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
-  }
+  },
+  "include": ["./src/"],
+  "exclude": [
+    "lib/**/*"
+  ]
 }

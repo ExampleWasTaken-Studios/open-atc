@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { CanvasProps } from '../Canvas/Canvas';
 
-interface SceneProps {
+export interface SceneProps {
   className?: string;
   children: ReactElement<CanvasProps>;
 }
