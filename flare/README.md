@@ -39,32 +39,32 @@ import { Rectangle } from '@ewt-studios/flare';
 
 const App = () => {
   return (
-          <Scene className="class-1 class-2">
-            <Canvas>
-              <Rectangle
-                x={10}
-                y={10}
-                z={0} // Controls the z-index
-                width={100}
-                height={80}
-                style="outline"
-                color="green"
-                borderWidth={2}
-                key={0}
-              >
-                <div>Hello World from a rectangle!</div>
-              </Rectangle>
-              <Circle
-                x={30}
-                y={30}
-                z={0}
-                diameter={100}
-                key={1}
-              >
-                <div>Hello World from a circle!</div>
-              </Circle>
-            </Canvas>
-          </Scene>
+    <Scene className="class-1 class-2">
+      <Canvas>
+        <Rectangle
+          x={10}
+          y={10}
+          z={0} // Controls the z-index
+          width={100}
+          height={80}
+          style="outline"
+          color="green"
+          borderWidth={2}
+          key={0}
+        >
+          <div>Hello World from a rectangle!</div>
+        </Rectangle>
+        <Circle
+          x={30}
+          y={30}
+          z={0}
+          diameter={100}
+          key={1}
+        >
+          <div>Hello World from a circle!</div>
+        </Circle>
+      </Canvas>
+    </Scene>
   )
 }
 ```
