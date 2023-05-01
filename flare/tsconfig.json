@@ -1,11 +1,5 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
-    "baseUrl": ".",
-    "paths": {
-      "@core/*": ["./core/*"],
-      "@client/*": ["./client/*"]
-    },
     "declaration": true,
     "declarationMap": true,
     "outDir": "./lib",
@@ -42,6 +36,7 @@
   },
   "include": ["./src/"],
   "exclude": [
+    "node_modules/**/*",
     "lib/**/*"
   ]
 }

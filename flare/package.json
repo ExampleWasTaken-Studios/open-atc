@@ -2,10 +2,10 @@
   "name": "flare",
   "version": "1.0.0",
   "description": "FLARE (Fast, Lightweight, Adaptable and Reactive Engine) is the render engine that is used in OpenATC.\r It provides a canvas that can be drawn on.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib/src/"
+    "lib"
   ],
   "scripts": {
     "build": "tsc"
