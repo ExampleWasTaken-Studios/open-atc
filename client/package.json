@@ -30,7 +30,7 @@
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
     "electron": "^24.1.2",
-    "electron-builder": "^23.6.0",
+    "electron-builder": "^24.3.0",
     "eslint": "^8.38.0",
     "eslint-plugin-react": "^7.32.2",
     "rollup": "^3.20.2",
