@@ -1,17 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./client/renderer/**/*.{html,tsx}'],
+  content: ['./src/renderer/**/*.{html,ts,tsx,js}'],
   theme: {
-    extend: {
-      colors: {
-        atmo: '#009BDA',
-        spanish: '#006FBA',
-      },
-    },
-    fontFamily: {
-      manrope: ['Manrope', 'sans-serif'],
-    },
+    extend: {},
   },
   plugins: [],
 };
-

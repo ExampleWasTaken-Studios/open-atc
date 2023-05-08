@@ -3,6 +3,7 @@
 node_modules/
 *.iml
 
+
 # FLARE
 flare/node_modules/
 flare/out/
@@ -19,3 +20,6 @@ client/node_modules/
 client/.rollup.cache/
 client/.temp/
 client/out/
+
+# Misc
+.DS_Store

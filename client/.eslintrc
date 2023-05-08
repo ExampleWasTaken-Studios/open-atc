@@ -1,97 +1,50 @@
-{
+ {
   "root": true,
   "env": {
     "browser": true,
-    "node": true,
-    "es6": true
+    "commonjs": true,
+    "es6": true,
+    "node": true
   },
-  "plugins": ["@typescript-eslint"],
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "eslint:recommended"
-  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": "latest",
     "ecmaFeatures": {
       "jsx": true
     },
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": 2021
   },
-  "ignorePatterns": ["out/**/*"],
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-function": ["error", { "allow": ["arrowFunctions"] }],
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "semi": ["error", "always"]
+  },
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": ["*.js"],
       "rules": {
-        "no-undef": "off",
-        "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": ["warn", {
-          "argsIgnorePattern": "^_",
-          "varsIgnorePattern": "^_",
-          "caughtErrorsIgnorePattern": "^_"
-        }
-        ],
-        "@typescript-eslint/no-extra-semi": "error",
-        "@typescript-eslint/no-extraneous-class": "error",
-        "@typescript-eslint/no-namespace": "off",
-        "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
-        "@typescript-eslint/lines-between-class-members": "error"
+        "@typescript-eslint/explicit-function-return-type": "off"
       }
     },
     {
       "files": ["*.tsx"],
       "rules": {
-        // "react/react-in-jsx-scope": "off",
-        "react/jsx-closing-bracket-location": ["error", "line-aligned"],
-        "react/jsx-max-props-per-line": ["error", { "maximum": 1}],
-        "react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
-        "react/jsx-closing-tag-location": "error",
-        "react/jsx-wrap-multilines": [
-          "error",
-          {
-            "declaration": "parens-new-line",
-            "assignment": "parens-new-line",
-            "return": "parens-new-line",
-            "arrow": "parens-new-line",
-            "condition": "parens-new-line",
-            "logical": "parens-new-line",
-            "prop": "parens-new-line"
-          }
-        ]
-      }
-    },
-    {
-      "files": ["*.js"],
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off"
+        "@typescript-eslint/explicit-function-return-type": "off"
       }
     }
-  ],
-  "rules": {
-    "no-extra-semi": "off",
-    "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
-    "curly": ["error", "multi-line"],
-    "indent": ["error", 2],
-    "eol-last": ["error", "always"],
-    "no-trailing-spaces": ["error", { "ignoreComments": true }],
-    "semi": ["error", "always"],
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "array-element-newline": [
-      "error",
-      {
-        "ArrayExpression": "consistent",
-        "ArrayPattern": { "minItems": 3 }
-      }
-    ],
-    "object-curly-spacing": ["error", "always", { "arraysInObjects": false }],
-    "comma-dangle": ["error", {
-      "arrays": "always-multiline",
-      "objects": "always-multiline",
-      "exports": "always-multiline",
-      "imports": "always-multiline"
-    }],
-    "@typescript-eslint/no-var-require": "off"
-  }
+  ]
 }
