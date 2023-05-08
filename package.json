@@ -16,8 +16,5 @@
   "bugs": {
     "url": "https://github.com/ExampleWasTaken/open-atc/issues"
   },
-  "homepage": "https://github.com/ExampleWasTaken/open-atc#readme",
-  "devDependencies": {
-    "wait-on": "^7.0.1"
-  }
+  "homepage": "https://github.com/ExampleWasTaken/open-atc#readme"
 }
