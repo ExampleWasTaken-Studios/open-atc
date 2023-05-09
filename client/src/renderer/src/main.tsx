@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './tailwind.css';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { Scope } from './components/Scope';
 
 const router = createHashRouter([
   {
     path: '/',
-    element: <div>Hello World from a div!</div>,
+    element: <Scope />,
   },
 ]);
 
