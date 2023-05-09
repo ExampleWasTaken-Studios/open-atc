@@ -31,7 +31,8 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-var-requires": "off",
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "endOfLine": "off"
   },
   "overrides": [
     {
