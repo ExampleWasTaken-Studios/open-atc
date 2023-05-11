@@ -1,6 +1,6 @@
-import { app, shell, BrowserWindow } from 'electron';
+import { app, BrowserWindow, shell } from 'electron';
 import { join } from 'path';
-import { optimizer, is } from '@electron-toolkit/utils';
+import { is, optimizer } from '@electron-toolkit/utils';
 
 const createWindow = (): void => {
   // Create the browser window.
@@ -8,11 +8,15 @@ const createWindow = (): void => {
     width: 900,
     height: 670,
     show: false,
+    resizable: is.dev,
+    fullscreen: !is.dev,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false,
     },
   });
+
+  mainWindow.setMenuBarVisibility(false);
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show();

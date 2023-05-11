@@ -4,6 +4,6 @@ import { api } from './index';
 declare global {
   interface Window {
     electron: ElectronAPI;
-    api: api;
+    api: typeof api;
   }
 }

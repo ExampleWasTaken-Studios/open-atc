@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "dev": "node scripts/dev.js",
+    "dev": "echo ERROR: You're probably trying to launch the client application. & echo Run \"cd client && npm run dev\"",
     "build": "node scripts/build.js"
   },
   "repository": {
