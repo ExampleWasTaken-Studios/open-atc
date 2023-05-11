@@ -10,13 +10,14 @@ on:
 jobs:
   client_eslint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
       - name: Setup node
         uses: actions/setup-node@v3
-      - name: Change into client dir and print
-        run: cd client && ls
       - name: Install dependencies
         run: npm ci
       - name: Lint
