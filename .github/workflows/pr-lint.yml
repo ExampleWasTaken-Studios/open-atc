@@ -9,6 +9,7 @@ on:
 
 jobs:
   client_eslint:
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,6 +24,7 @@ jobs:
       - name: Lint
         run: npx eslint src
   client_prettier:
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     defaults:
       run:
