@@ -1,6 +1,7 @@
 import { app, BrowserWindow, shell } from 'electron';
 import { join } from 'path';
 import { is, optimizer } from '@electron-toolkit/utils';
+import './IPC/ipc';
 
 const createWindow = (): void => {
   // Create the browser window.

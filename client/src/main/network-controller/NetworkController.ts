@@ -2,7 +2,7 @@ import { WebSocket } from 'ws';
 import { v4 as uuidv4 } from 'uuid';
 
 export class NetworkController {
-  private readonly URL = 'wss://socketsbay.com/wss/v2/1/demo/';
+  private readonly URL = 'wss://socketsbay.com/wss/v2/2/demo/';
 
   private socket!: WebSocket;
   private connected: boolean;
@@ -36,6 +36,8 @@ export class NetworkController {
     }
 
     return new Promise<void>((resolve, reject) => {
+      this.socket = new WebSocket(this.URL);
+
       this.socket.onopen = (): void => {
         this.connected = true;
         resolve();
@@ -44,8 +46,6 @@ export class NetworkController {
       this.socket.once('error', (err): void => {
         reject(err);
       });
-
-      this.socket = new WebSocket(this.URL);
     });
   }
 
@@ -94,5 +94,9 @@ export class NetworkController {
     if (!this.errorHandlers.delete(id)) {
       throw Error(`No error handler with ID '${id}' found.`);
     }
+  }
+
+  public async ping(): Promise<void> {
+    this.socket.ping();
   }
 }

@@ -7,24 +7,26 @@ interface ScopeProps {
 }
 
 export const Scope = ({ className }: ScopeProps) => {
-  console.log('WINDOW:', window);
   const [networkController] = useState(window.api.networkController);
-  const [connectedToServer, setConnectedToServer] = useState(false);
+  const [socketConnected, setSocketConnected] = useState(false);
 
   useEffect(() => {
     networkController
       .connect()
       .then(() => {
-        setConnectedToServer(true);
+        setSocketConnected(true);
+        console.log('[NETWORK CONTROLLER] Connected to websocket');
       })
       .catch((err: Error) => {
         throw err;
       });
 
     return () => {
+      console.log('useEffect return');
       networkController
         .disconnect()
         .then(() => {
+          setSocketConnected(false);
           console.log('[NETWORK CONTROLLER] Disconnected');
         })
         .catch((err: Error) => {
@@ -33,7 +35,7 @@ export const Scope = ({ className }: ScopeProps) => {
     };
   }, []);
 
-  if (!connectedToServer) {
+  if (!socketConnected) {
     return <Load />;
   }
 

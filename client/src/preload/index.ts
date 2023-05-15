@@ -1,10 +1,27 @@
 import { contextBridge } from 'electron';
 import { electronAPI } from '@electron-toolkit/preload';
-import { NetworkController } from '../main/network-controller/NetworkController';
+import { ipcRenderer } from 'electron';
+
+const networkController = {
+  isConnected: (): Promise<boolean> =>
+    ipcRenderer.invoke('socket/is-connected'),
+  connect: (): Promise<void> => ipcRenderer.invoke('socket/connect'),
+  disconnect: (force?: boolean): Promise<void> =>
+    ipcRenderer.invoke('socket/disconnect', force),
+  addMessageListener: (
+    callback: (event: MessageEvent) => void
+  ): Promise<string> => ipcRenderer.invoke('socket/add-msg-listener', callback),
+  removeMessageListener: (id: string): Promise<void> =>
+    ipcRenderer.invoke('socket/remove-msg-listener', id),
+  addErrorListener: (callback: (err: Error) => void): Promise<string> =>
+    ipcRenderer.invoke('socket/add-err-listener', callback),
+  removeErrorListener: (id: string): Promise<void> =>
+    ipcRenderer.invoke('socket/remove-err-listener', id),
+};
 
 // Custom APIs for renderer
 export const api = {
-  networkController: new NetworkController(),
+  networkController: networkController,
 };
 
 // Use `contextBridge` APIs to expose Electron APIs to
