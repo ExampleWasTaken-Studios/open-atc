@@ -22,7 +22,7 @@ export class MainWindow {
     this.window.setMenuBarVisibility(false);
     this.registerWindowListeners();
     this.forwardLinksToShell();
-    this.load();
+    this.loadRendererBase();
   }
 
   public getWindow(): BrowserWindow {
@@ -42,7 +42,7 @@ export class MainWindow {
     });
   }
 
-  private load(): void {
+  private loadRendererBase(): void {
     // HMR for renderer base on electron-vite cli.
     // Load the remote URL for development or the local html file for production.
     if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
