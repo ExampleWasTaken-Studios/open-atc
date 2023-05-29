@@ -1,6 +1,4 @@
-import { Canvas, Circle, Rectangle, Scene } from '@ewt-studios/flare';
-
-const mockRects = [
+export const mockRects = [
   {
     x: 300,
     y: 500,
@@ -63,7 +61,7 @@ const mockRects = [
   },
 ];
 
-const mockCircles = [
+export const mockCircles = [
   {
     x: 1200,
     y: 652,
@@ -120,48 +118,3 @@ const mockCircles = [
     id: 35791,
   },
 ];
-
-export const Scope = () => {
-  return (
-    <Scene className="w-[1700px] h-[800px]">
-      <Canvas className="bg-black">
-        <>
-          {mockRects.map(current => {
-            return (
-              <Rectangle
-                width={current.width}
-                height={current.height}
-                style={current.style as 'outline' | 'fill'}
-                color={current.color}
-                borderWidth={current.borderWidth}
-                x={current.x}
-                y={current.y}
-                z={current.z}
-                key={current.id}
-              >
-                {current.children}
-              </Rectangle>
-            );
-          })}
-
-          {mockCircles.map(current => {
-            return (
-              <Circle
-                diameter={current.diameter}
-                style={current.style as 'outline' | 'fill'}
-                color={current.color}
-                borderWidth={current.borderWidth}
-                x={current.x}
-                y={current.y}
-                z={current.z}
-                key={current.id}
-              >
-                {current.children}
-              </Circle>
-            );
-          })}
-        </>
-      </Canvas>
-    </Scene>
-  );
-};
