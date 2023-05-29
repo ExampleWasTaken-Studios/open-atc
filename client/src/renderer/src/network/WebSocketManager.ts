@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export class WebSocketManager {
-  private static readonly URL = 'wss://socketsbay.com/wss/v2/2/demo/';
+  private static readonly URL = '';
   public socket: WebSocket;
 
   private openListeners: Map<string, OpenListener>;
