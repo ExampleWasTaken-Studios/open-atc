@@ -47,13 +47,13 @@ This JSON document would be noted as `username` and `settings.volume`.
 | `requestType?`  | The type of the request.                                                                                                                                 | [Request type](#request-type) | 1     |
 | `updateType?`   | The type of the update.                                                                                                                                  | [Update type](#update-type)   | 1     |
 | `eventType?`    | The type of the event.                                                                                                                                   | [Event type](#event-type)     | 1     |
-| `timestamp`     | The UNIX time the message was generated.                                                                                                                 | Integer                       | 1     |    
+| `timestamp`     | The UNIX time at which the message was generated.                                                                                                                 | Integer                       | 1     |    
 | `messageId`     | The ID of the message.                                                                                                                                   | UUID                          | 1     |
 | `userId`        | The ID of the user.                                                                                                                                      | UUID                          | 1     |
 | `sessionId`     | The ID of the session.                                                                                                                                   | UUID                          | 1     |
 | `requestId`     | The ID of the request.                                                                                                                                   | UUID                          | 1     |
 | `responseId?`   | The ID of the response to a request.                                                                                                                     | UUID                          | 1     |
-| `responseCode?` | The response code of a response. Response codes are derived from [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status). | Integer                       |       |
+| `responseCode?` | The status code of a response. Response status codes are derived from [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status). | Integer                       |       |
 | `payload`       | The payload of the message.                                                                                                                              | [Payload type](#payload-type) | 1     |
 
 
