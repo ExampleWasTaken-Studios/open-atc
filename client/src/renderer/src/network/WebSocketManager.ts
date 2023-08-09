@@ -1,7 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 
+/**
+ * Manages the websocket connection to the server. The URL is provided by a magic value.
+ */
 export class WebSocketManager {
-  private static readonly URL = '';
+  // This is not a valid URL. It's just to prevent the renderer from failing.
+  private static readonly URL = 'ws://google.com/';
   public socket: WebSocket;
 
   private openListeners: Map<string, OpenListener>;
@@ -150,6 +154,21 @@ export class WebSocketManager {
 
   public getReadyState(): number {
     return this.socket.readyState;
+  }
+
+  public getReadyStateString(): string {
+    switch (this.socket.readyState) {
+      case 0:
+        return 'CONNECTING';
+      case 1:
+        return 'OPEN';
+      case 2:
+        return 'CLOSING';
+      case 3:
+        return 'CLOSED';
+      default:
+        return 'N/A';
+    }
   }
 }
 

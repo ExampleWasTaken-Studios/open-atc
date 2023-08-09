@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './tailwind.css';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
-import { Scope } from './components/Scope/Scope';
+import { HomeView } from './components/views/home/HomeView';
 
 const router = createHashRouter([
   {
     path: '/',
-    element: <Scope className="w-96 h-96" />,
+    element: <HomeView />,
   },
 ]);
 
